@@ -16,8 +16,9 @@ public class AcademyController {
 
     @PostMapping("")
     // 파라미터를 requestBody로 전달하도록 설정
-    public int post(@RequestBody Academy academy) {
-        return academyMapper.insert(academy);
+    public Academy post(@RequestBody Academy academy) {
+        academyMapper.insert(academy);
+        return academy;
     }
 
     @GetMapping("")
