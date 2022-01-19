@@ -13,9 +13,13 @@ public interface AcademyMapper {
     int insert(@Param("academy") Academy academy);
 
     @Select("select * from academy")
-    @Results({
+    @Results(id="academyMap", value={
             @Result(property = "name", column="academy_name"),
             @Result(property = "loc", column="academy_loc")
     })
     List<Academy> getAcademies();
+
+    @ResultMap("academyMap")
+    @Select("select * from academy where id=#{id}")
+    Academy getById(int id);
 }
